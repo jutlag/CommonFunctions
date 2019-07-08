@@ -15,6 +15,9 @@ Function New-DevopsProject {
   I created this to kick start a new project without having to waste time setting
   up each module initially.
 
+  .Notes
+    Author: Gurpreet Singh Jutla 
+
   .EXAMPLE
 
   C:\PS> New-DevopsProject -ProjectName <Project Name> -Modules <Module1>, <Module2> -ProjectPath <projectPath> -CompanyName <Company Name> -Author <Author>
