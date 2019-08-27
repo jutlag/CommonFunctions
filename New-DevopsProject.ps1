@@ -40,20 +40,21 @@ Function New-DevopsProject {
 
  Process {
 
-  if (-not (Test-Path -path $path)) {
+  if (-not (Test-Path -path (Join-Path -Path $ProjectPath -ChildPath $ProjectName))) {
    New-Item -Path $ProjectPath -Name $ProjectName -ItemType "directory"
   }
 
+  $ProjectPath = (Join-Path -Path $ProjectPath -ChildPath $ProjectName)
   if ([string]::IsNullOrEmpty( $ProjectStartDate)) {
    $ProjectStartDate = [String](Get-Date)
   }
 
 
   foreach ($module in $Modules) {
-   $Folder = "$Project.$module"
-   $file1 = "$Project-$module.psd1"
-   $file2 = "$Project-$module.psm1"
-   $file3 = "$Project-$module.tests.ps1"
+   $Folder = "$ProjectName.$module"
+   $file1 = "$ProjectName-$module.psd1"
+   $file2 = "$ProjectName-$module.psm1"
+   $file3 = "$ProjectName-$module.tests.ps1"
    $file4 = "function-$module.tests.ps1"
    $file5 = "function-$module.ps1"
    $newguid = New-Guid
@@ -113,9 +114,9 @@ Version: 	1.0.0.0 - $projectStartDate - Project $ProjectName Build Release Deplo
 . `$PSScriptRoot\$file5
 
 Export-ModuleMember -Function 'New-Dummy$Module'"
-   $content3 = "#Unit/Pester tests for the $module module for $project"
-   $content4 = "#Unit/Pester tests for the $module functions for $project"
-   $content5 = "#Functional code for the $module module for $project
+   $content3 = "#Unit/Pester tests for the $module module for $projectName"
+   $content4 = "#Unit/Pester tests for the $module functions for $ProjectName"
+   $content5 = "#Functional code for the $module module for $ProjectName
 <#==============================================================================================
 Copyright(c) $companyName. All rights reserved.
 
@@ -158,18 +159,20 @@ Param (
 }"
 
    Write-Host `$content
-   New-Item -ItemType "Directory" -Path ($path ) -Name $folder
-   New-Item -ItemType "File" -Path ($path + "\" + $Folder) -Name $file1
-   New-Item -ItemType "File" -Path ($path + "\" + $Folder) -Name $file2
-   New-Item -ItemType "File" -Path ($path + "\" + $Folder) -Name $file3
-   New-Item -ItemType "File" -Path ($path + "\" + $Folder) -Name $file4
-   New-Item -ItemType "File" -Path ($path + "\" + $Folder) -Name $file5
-   Set-Content -Path ($path + "\" + $Folder + "\" + $file1) -Value $content
-   Set-Content -Path ($path + "\" + $Folder + "\" + $file2) -Value $content2
-   Set-Content -Path ($path + "\" + $Folder + "\" + $file3) -Value $content3
-   Set-Content -Path ($path + "\" + $Folder + "\" + $file4) -Value $content4
-   Set-Content -Path ($path + "\" + $Folder + "\" + $file5) -Value $content5
+   New-Item -ItemType "Directory" -Path ($ProjectPath ) -Name $folder
+   New-Item -ItemType "File" -Path ($ProjectPath + "\" + $Folder) -Name $file1
+   New-Item -ItemType "File" -Path ($ProjectPath + "\" + $Folder) -Name $file2
+   New-Item -ItemType "File" -Path ($ProjectPath + "\" + $Folder) -Name $file3
+   New-Item -ItemType "File" -Path ($ProjectPath + "\" + $Folder) -Name $file4
+   New-Item -ItemType "File" -Path ($ProjectPath + "\" + $Folder) -Name $file5
+   Set-Content -Path ($ProjectPath + "\" + $Folder + "\" + $file1) -Value $content
+   Set-Content -Path ($ProjectPath + "\" + $Folder + "\" + $file2) -Value $content2
+   Set-Content -Path ($ProjectPath + "\" + $Folder + "\" + $file3) -Value $content3
+   Set-Content -Path ($ProjectPath + "\" + $Folder + "\" + $file4) -Value $content4
+   Set-Content -Path ($ProjectPath + "\" + $Folder + "\" + $file5) -Value $content5
   }
  }
 }
 
+$modules = ("CommonFunctions","Profile","Schema","Pipeline")
+New-DevopsProject  -ProjectName "ecd" -Modules $modules -ProjectPath "C:\Code\Repositories" -CompanyName "LesserGeek" -Author "gsjutla@hotmail.com" -ProjectStartDate (Get-Date)
