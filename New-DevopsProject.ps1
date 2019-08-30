@@ -174,5 +174,5 @@ Param (
  }
 }
 
-$modules = ("CommonFunctions","Profile","Schema","Pipeline")
+$modules = ("Roles")
 New-DevopsProject  -ProjectName "ecd" -Modules $modules -ProjectPath "C:\Code\Repositories" -CompanyName "LesserGeek" -Author "gsjutla@hotmail.com" -ProjectStartDate (Get-Date)
