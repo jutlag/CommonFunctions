@@ -174,5 +174,10 @@ Param (
  }
 }
 
-$modules = ("Roles")
-New-DevopsProject  -ProjectName "ecd" -Modules $modules -ProjectPath "C:\Code\Repositories" -CompanyName "LesserGeek" -Author "gsjutla@hotmail.com" -ProjectStartDate (Get-Date)
+$modules = ("TestModule")
+New-DevopsProject  -ProjectName "MyTestProject" `
+                   -Modules $modules `
+                   -ProjectPath "C:\mytestCode" `
+                   -CompanyName "LesserGeek" `
+                   -Author "gsjutla@hotmail.com" `
+                   -ProjectStartDate (Get-Date)
