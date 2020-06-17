@@ -56,9 +56,21 @@ Function Set-AnyProcessAsCritical {
 
   .DESCRIPTION
 
-  This function is written to demonstrate the power of Powershell as a scripting language. 
-  Please use this wisely, only for education purposes or for collecting a complete memory 
-  dump when an application crash is needed along with kernel stacks or a complete memory dump.
+  The code referred in this article is written to demonstrate the power of Powershell 
+  as a scripting language. Please use this wisely, only for education purposes or for 
+  collecting a memory dump on application crash is needed with usermode along with kernel 
+  stacks or a complete memory dump. 
+
+  This code can make any running user mode application/service/process a critical process. 
+  Closing the application would lead to a system crash. Please ensure you save any unsaved data. 
+  The system crash will not cause any other issues but I will not be responsible for any losses 
+  while running this application on production systems. 
+
+  I cannot be held responsible for any issues caused by this application. 
+
+  If you do not have good knowledge of Powershell, Windows, Debugging or IT systems I would highly 
+  advise you engage a responsible and experienced IT professional before trying this code. 
+  Run this in a test isolated environment only.
 
   Please note that you will need to setup the registry key to generate a complete memory dump as I
   do not set that registry key explictly.
