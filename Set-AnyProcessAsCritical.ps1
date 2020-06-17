@@ -57,7 +57,7 @@ Function Set-AnyProcessAsCritical {
   .DESCRIPTION
 
   The code referred in this article is written to demonstrate the power of Powershell 
-  as a scripting language. Please use this wisely, only for education purposes or for 
+  as a scripting language. Please use this wisely, only for educational purposes or for 
   collecting a memory dump on application crash is needed with usermode along with kernel 
   stacks or a complete memory dump. 
 
