@@ -133,5 +133,3 @@ process {
 
     }
 }
-
-Set-AnyProcessAsCritical -process 
