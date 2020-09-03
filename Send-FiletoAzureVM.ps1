@@ -98,7 +98,7 @@ process {
             $fileChunkSize = 5000
             
             #Read the entire file content and convert them to utf8 encoding and BAse 64, this also encodes file contents during transmit
-            $content = ([Convert]::ToBase64String([System.Text.Encoding]::utf8.GetBytes((Get-Content -Path $file -Raw))))
+            $content = ([Convert]::ToBase64String([System.Text.Encoding]::utf8.GetBytes((Get-Content -Path $file -Raw -Encoding Default))))
 
             #The payload handler is a script that must be run inside the target VM to convert the contents back and save them
             $payloadHandler = Join-path -Path "." -ChildPath "InVMScriptExecution.ps1"

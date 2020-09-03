@@ -22,12 +22,12 @@ $fileObj = (Join-Path -Path $Path -ChildPath $FileName)
 if($toAppend){
     Write-Host "Appending file"
     #Decode and store file content into a previously existing file
-    [System.Text.Encoding]::utf8.GetString([System.Convert]::FromBase64String($Content)) | Out-File $fileObj -Append
+    [System.Text.Encoding]::utf8.GetString([System.Convert]::FromBase64String($Content)) | Out-File $fileObj -Append -Encoding default -NoNewline
 }
 else{
     Write-Host "Forcing file"
     #Decode and store file content into a file, overwrite the file if it already exists
-    [System.Text.Encoding]::utf8.GetString([System.Convert]::FromBase64String($Content)) | Out-File $fileObj -Force
+    [System.Text.Encoding]::utf8.GetString([System.Convert]::FromBase64String($Content)) | Out-File $fileObj -Force -Encoding default -NoNewline
 }
 
 #Show the directory contents
