@@ -1,4 +1,6 @@
 #action
+Write-Output "Passed arguments:"
+$args
 $null = Update-AzConfig -DisplayBreakingChangeWarning $false
 $ExcludedSubnets = @('GatewaySubnet','AzureFirewallSubnet','AzureFirewallManagementSubnet')
 $virtualNetworks = Get-AzVirtualNetwork
