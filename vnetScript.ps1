@@ -18,7 +18,7 @@ foreach($subnetobj in $subnetsToFix){
         if(($null -eq $networkSecurityGroupObj) -or ($networkSecurityGroupObj.count -eq 0)){
             $networkSecurityGroupObj = New-AzNetworkSecurityGroup -Name $nsgName -ResourceGroupName $resourcegroup -Location $vNetObj.Location
         }
-        Set-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vNetObj -NetworkSecurityGroupId $networkSecurityGroupObj.Id -AddressPrefix ($subnetobj.AddressPrefix)
-        $vNetObj | Set-AzVirtualNetwork
+        $null = Set-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vNetObj -NetworkSecurityGroupId $networkSecurityGroupObj.Id -AddressPrefix ($subnetobj.AddressPrefix)
+        $null = $vNetObj | Set-AzVirtualNetwork
     }
 }
