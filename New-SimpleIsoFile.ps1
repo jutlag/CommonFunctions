@@ -1,8 +1,8 @@
-function New-SimpleIsoFile {  
+function New-SimpleISOFile {  
 <#
   .SYNOPSIS
 
-  Creates a Simple Iso file (Non Bootable) with contents from a folder specified
+  Creates a Simple ISO file (Non Bootable) with contents from a folder specified
 
   .DESCRIPTION
 
@@ -12,9 +12,11 @@ function New-SimpleIsoFile {
   RDP isnt available but you have the ability to mount an ISO, this script can prove handy. Simply specify the source folder and the ISO path where the 
   ISO needs to be created.
 
+  For a code to create a Bootable ISO file, please email gsjutla@lessergeek.com
+
   .EXAMPLE
 
-  C:\PS> New-SimpleIsoFile -SourceFolder <Folder to create ISO from> -ISOPAth <Target path for ISO>
+  C:\PS> New-SimpleISOFile -SourceFolder <Folder to create ISO from> -ISOPAth <Target path for ISO>
 #>
   [CmdletBinding()]
   Param( 
